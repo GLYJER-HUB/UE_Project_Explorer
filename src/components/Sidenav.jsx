@@ -12,10 +12,13 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemIcon from "@mui/material/ListItemIcon";
+import {
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  ListItemIcon,
+} from "@mui/material";
+
 import {
   FolderOpen,
   LaptopOutlined,
@@ -24,12 +27,12 @@ import {
   School,
 } from "@mui/icons-material";
 
-import colors from '../utilities/color'
+import colors from "../utilities/color";
 import logo from "../assets/UE.png";
 import SearchBar from "./Search";
+import { useNavigate } from "react-router-dom";
 
-
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -99,7 +102,11 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function DrawerNav() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const handleClick = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -142,7 +149,11 @@ export default function DrawerNav() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{ boxShadow: `2px 1px ${colors.accent}` }}
+      >
         <Toolbar>
           <IconButton
             aria-label="open drawer"
@@ -200,7 +211,14 @@ export default function DrawerNav() {
         <Divider />
         <List>
           {categoriesItem.map((item, index) => (
-            <ListItem key={index} disablePadding sx={{ display: "block" }}>
+            <ListItem
+              key={index}
+              disablePadding
+              sx={{ display: "block" }}
+              onClick={() => {
+                handleClick(item.path);
+              }}
+            >
               <ListItemButton
                 sx={{
                   minHeight: 48,
