@@ -1,24 +1,37 @@
 import * as React from "react";
 import {
-  CardMedia,
+  Avatar,
+  CardHeader,
   Typography,
   Divider,
   CardContent,
   CardActions,
   Card,
 } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
 import colors from "../../utilities/color";
-import ph from "../../assets/ph.webp";
 
-export default function ProjectCard({ type, name, description, author, handleClick }) {
+export default function ProjectCard({
+  type,
+  name,
+  description,
+  author,
+  handleClick,
+}) {
+  const abbreviation = name.split(" ");
+  const projectAbbreviation = Array.isArray(abbreviation)
+    ? abbreviation[0][0] + (abbreviation[1] ? abbreviation[1][0] : "")
+    : abbreviation[0][0];
   return (
-    <Card sx={{ maxWidth: 300, mb: 2 }}>
-      <CardMedia
-        component="img"
-        alt="project cover"
-        height="140"
-        image={ph}
-        onClick={() => handleClick}
+    <Card
+      sx={{ maxWidth: 300, mb: 2, border: `0.3px solid ${colors.cardBorder}` }}
+    >
+      <CardHeader
+        avatar={
+          <Avatar sx={{ bgcolor: colors.primary }} aria-label="recipe">
+            {projectAbbreviation}
+          </Avatar>
+        }
       />
       <CardContent>
         <Typography
@@ -30,7 +43,12 @@ export default function ProjectCard({ type, name, description, author, handleCli
         >
           {type}
         </Typography>
-        <Typography gutterBottom variant="h6" component="div">
+        <Typography
+          gutterBottom
+          variant="h6"
+          fontWeight={"bold"}
+          component="div"
+        >
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -39,8 +57,15 @@ export default function ProjectCard({ type, name, description, author, handleCli
       </CardContent>
       <Divider sx={{ width: "97%", marginLeft: "4px" }} />
       <CardActions>
-        <Typography variant="body2" color="text.secondary">
-          Réalisé par: {author}
+        <Typography component="div" display={"flex"}>
+          <PersonIcon sx={{ color: colors.primary, fontSize: "18px", mr: 1 }} />
+          <Typography
+            sx={{ fontSize: "14px" }}
+            variant="body2"
+            color={"GrayText"}
+          >
+            {author}
+          </Typography>
         </Typography>
       </CardActions>
     </Card>
