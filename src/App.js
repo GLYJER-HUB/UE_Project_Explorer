@@ -1,4 +1,4 @@
-import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import DrawerNav from "./components/Sidenav.jsx";
 import Home from "./pages/Home.jsx";
 import Informatique from "./pages/Informatique.jsx";
@@ -6,6 +6,7 @@ import Comptabilite from "./pages/Comptabilite.jsx";
 import Gestion from "./pages/Gestion.jsx";
 import Education from "./pages/Education.jsx";
 import Layout from "./components/Layout.jsx";
+import NotFound from "./components/NotFound.jsx";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
             <Route path="comptabilite" element={<Comptabilite />} />
             <Route path="gestion" element={<Gestion />} />
             <Route path="education" element={<Education />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
