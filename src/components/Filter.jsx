@@ -13,21 +13,28 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function FilterStack({ filterBy }) {
+export default function FilterButton({
+  options,
+  selectedOption,
+  onOptionChange,
+}) {
   return (
     <div>
-      <Stack direction="row" spacing={3}>
-        {Array.isArray(filterBy)
-          ? filterBy.map((filter) => {
+      <Stack direction="row" spacing={2}>
+        {Array.isArray(options)
+          ? options.map((option,index) => {
               return (
                 <Item
+                  key={index}
                   sx={{
-                    borderRadius: 10,
-                    background: "inherit",
-                    color: colors.primary,
+                    borderRadius: 8,
+                    background:
+                      selectedOption === option ? colors.primary : "inherit",
+                    color: selectedOption === option ? "white" : colors.primary,
                   }}
+                  onClick={() => onOptionChange(option)}
                 >
-                  {filter}
+                  {option}
                 </Item>
               );
             })

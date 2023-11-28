@@ -1,19 +1,25 @@
+import React from "react";
 import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
+import DisplayGrid from "../components/DisplayGrid";
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-
-        <Box component="main" sx={{ flexGrow: 1, p: 5 }} alignItems="center">
-         <h1>Home</h1>
-      
-          
-            
-
-        
-        </Box>
+      <Box component="main" sx={{ flexGrow: 1, p: 5 }} alignItems="center">
+        <Typography
+          variant="h4"
+          color={"GrayText"}
+          fontWeight="600"
+          textAlign="left"
+          marginTop={8}
+        >
+          Tous les projets
+        </Typography>
+        <DisplayGrid />
       </Box>
     </>
   );
 };
+
+export default Home;
