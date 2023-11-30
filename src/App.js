@@ -7,6 +7,7 @@ import Gestion from "./pages/Gestion.jsx";
 import Education from "./pages/Education.jsx";
 import Layout from "./components/Layout.jsx";
 import NotFound from "./components/NotFound.jsx";
+import ProjectCardDetail from "./components/cards/ProjectCardDeatil.jsx";
 function App() {
   return (
     <>
@@ -18,8 +19,9 @@ function App() {
             <Route path="comptabilite" element={<Comptabilite />} />
             <Route path="gestion" element={<Gestion />} />
             <Route path="education" element={<Education />} />
-            <Route path="*" element={<NotFound />} />
           </Route>
+          <Route path="detail/:id" element={<ProjectCardDetail />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>

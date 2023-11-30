@@ -14,10 +14,11 @@ export default function DisplayGrid({ projectList }) {
             <Grid item xs={4} key={project.type + index}>
               <ProjectCard
                 key={project.type + index}
+                id={project._id}
                 type={project?.type}
-                name={project?.name}
+                name={project?.project_name}
                 description={project?.description}
-                author={project?.author}
+                authors={project?.authors}
               />
             </Grid>
           ))

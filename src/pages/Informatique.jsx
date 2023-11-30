@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, Box } from "@mui/material";
 import FilterButton from "../components/Filter";
 import DisplayGrid from "../components/DisplayGrid";
 import { useState } from "react";
-import { projects } from "../utilities/DummyData";
 
 const Informatique = () => {
   const toFilteredBy = ["App Mobile", "Desktop App", "Web App"];
   const [selectedOption, setSelectedOption] = useState("");
+  const [projects, setProjects] = useState([]);
 
   const handleFilterChange = (option) => {
     // Handle filter change to change grid
     setSelectedOption(option);
     console.log(`Filter changed to: ${option}`);
   };
- 
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const response = await fetch("http://localhost:4000/api/projects");
+      const responseData = await response.json();
+      setProjects(responseData.projects);
+    };
+
+    fetchProjects();
+  }, []);
+
   return (
     <>
       <Box component="main" sx={{ flexGrow: 1, p: 5 }} alignItems="center">

@@ -10,18 +10,22 @@ import {
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import colors from "../../utilities/color";
+import { useNavigate } from "react-router-dom";
 
-export default function ProjectCard({
-  type,
-  name,
-  description,
-  author,
-  handleClick,
-}) {
+export default function ProjectCard({ id, name, description, authors, type }) {
+  let author1, author2;
   const abbreviation = name.split(" ");
   const projectAbbreviation = Array.isArray(abbreviation)
     ? abbreviation[0][0] + (abbreviation[1] ? abbreviation[1][0] : "")
     : abbreviation[0][0];
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/detail/${id}`);
+  };
+  if (Array.isArray(authors)) {
+    [author1, author2 = ""] = authors;
+  }
+
   return (
     <Card
       sx={{ maxWidth: 300, mb: 2, border: `0.3px solid ${colors.cardBorder}` }}
@@ -56,7 +60,7 @@ export default function ProjectCard({
         </Typography>
       </CardContent>
       <Divider sx={{ width: "97%", marginLeft: "4px" }} />
-      <CardActions>
+      <CardActions onClick={handleClick}>
         <Typography component="div" display={"flex"}>
           <PersonIcon sx={{ color: colors.primary, fontSize: "18px", mr: 1 }} />
           <Typography
@@ -64,7 +68,7 @@ export default function ProjectCard({
             variant="body2"
             color={"GrayText"}
           >
-            {author}
+            {`${author1}, ${author2}`}
           </Typography>
         </Typography>
       </CardActions>
