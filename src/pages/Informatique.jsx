@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, } from "@mui/material";
 import FilterButton from "../components/Filter";
 import DisplayGrid from "../components/DisplayGrid";
 import { useState } from "react";
-
+import Loader from "../components/Loader";
 const Informatique = () => {
   const toFilteredBy = ["App Mobile", "Desktop App", "Web App"];
   const [selectedOption, setSelectedOption] = useState("");
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleFilterChange = (option) => {
     // Handle filter change to change grid
@@ -19,6 +20,7 @@ const Informatique = () => {
       const response = await fetch("http://localhost:4000/api/projects");
       const responseData = await response.json();
       setProjects(responseData.projects);
+      setLoading(false);
     };
 
     fetchProjects();
@@ -43,7 +45,7 @@ const Informatique = () => {
           selectedOption={selectedOption}
           onOptionChange={handleFilterChange}
         />
-        <DisplayGrid projectList={projects} />
+        {loading ? <Loader /> : <DisplayGrid projectList={projects} />}
       </Box>
     </>
   );

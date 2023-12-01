@@ -11,19 +11,20 @@ import ProjectCardDetail from "./components/cards/ProjectCardDeatil.jsx";
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="informatique" element={<Informatique />} />
-            <Route path="comptabilite" element={<Comptabilite />} />
-            <Route path="gestion" element={<Gestion />} />
-            <Route path="education" element={<Education />} />
-          </Route>
-          <Route path="detail/:id" element={<ProjectCardDetail />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+     
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="informatique" element={<Informatique />} />
+              <Route path="comptabilite" element={<Comptabilite />} />
+              <Route path="gestion" element={<Gestion />} />
+              <Route path="education" element={<Education />} />
+            </Route>
+            <Route path="detail/:id" element={<ProjectCardDetail />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
     </>
   );
 }

@@ -3,9 +3,11 @@ import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import FilterButton from "../components/Filter";
 import DisplayGrid from "../components/DisplayGrid";
+import Loader from "../components/Loader";
 const Comptabilite = () => {
   const accountingFilter = ["Plan d'affaire ", "Système comptable "];
   const [selectedOption, setSelectedOption] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const handleFilterChange = (option) => {
     // Handle filter change to change grid
@@ -31,7 +33,7 @@ const Comptabilite = () => {
           selectedOption={selectedOption}
           onOptionChange={handleFilterChange}
         />
-        <DisplayGrid />
+        {loading ? <Loader /> : <DisplayGrid projectList='' />}
       </Box>
     </>
   );

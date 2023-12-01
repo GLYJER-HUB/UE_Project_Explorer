@@ -4,11 +4,14 @@ import { Typography } from "@mui/material";
 import FilterButton from "../components/Filter";
 import DisplayGrid from "../components/DisplayGrid";
 import { useState } from "react";
+import Loader from "../components/Loader";
 const Gestion = () => {
   const gesttionFilter = ["Plan d'affaire", "Rédaction de projet", "Mémoire"];
-    const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
+  const [loading, setLoading] = useState(true);
+  
   const handleFilterChange = (option) => {
-    // Handle filter change 
+    // Handle filter change
     setSelectedOption(option);
     console.log(`Filter changed to: ${option}`);
   };
@@ -31,7 +34,7 @@ const Gestion = () => {
           onOptionChange={handleFilterChange}
         />
 
-        <DisplayGrid />
+        {loading ? <Loader /> : <DisplayGrid />}
       </Box>
     </>
   );

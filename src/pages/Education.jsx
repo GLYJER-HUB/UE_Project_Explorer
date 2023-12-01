@@ -3,10 +3,13 @@ import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import DisplayGrid from "../components/DisplayGrid";
 import FilterButton from "../components/Filter";
+import Loader from "../components/Loader";
+
 const Education = () => {
   const educationFilter = ["Rédaction projet", "Mémoire"];
   const [selectedOption, setSelectedOption] = useState("");
-
+  const [loading, setLoading] = useState(true);
+  
   const handleFilterChange = (option) => {
     // Handle filter change to change grid
     setSelectedOption(option);
@@ -30,7 +33,7 @@ const Education = () => {
           selectedOption={selectedOption}
           onOptionChange={handleFilterChange}
         />
-        <DisplayGrid />
+        {loading ? <Loader /> : <DisplayGrid projectList={projects} />}
       </Box>
     </>
   );

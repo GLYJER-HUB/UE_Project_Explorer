@@ -1,9 +1,10 @@
-import React from "react";
+import {React,useState} from "react";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import DisplayGrid from "../components/DisplayGrid";
-
+import Loader from "../components/Loader";
 const Home = () => {
+   const [loading, setLoading] = useState(true);
   return (
     <>
       <Box component="main" sx={{ flexGrow: 1, p: 5 }} alignItems="center">
@@ -16,7 +17,7 @@ const Home = () => {
         >
           Tous les projets
         </Typography>
-        <DisplayGrid />
+        {loading ? <Loader /> : <DisplayGrid/>}
       </Box>
     </>
   );

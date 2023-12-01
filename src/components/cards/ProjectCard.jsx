@@ -7,6 +7,7 @@ import {
   CardContent,
   CardActions,
   Card,
+  Skeleton,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import colors from "../../utilities/color";
@@ -28,13 +29,17 @@ export default function ProjectCard({ id, name, description, authors, type }) {
 
   return (
     <Card
-      sx={{ maxWidth: 300, mb: 2, border: `0.3px solid ${colors.cardBorder}` }}
+      sx={{ maxWidth: 350, mb: 2, border: `0.3px solid ${colors.cardBorder}` }}
     >
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: colors.primary }} aria-label="recipe">
-            {projectAbbreviation}
-          </Avatar>
+          projectAbbreviation ? (
+            <Avatar sx={{ bgcolor: colors.primary }} aria-label="recipe">
+              {projectAbbreviation}
+            </Avatar>
+          ) : (
+            <Skeleton variant="circular" width={40} height={40} />
+          )
         }
       />
       <CardContent>
@@ -45,7 +50,7 @@ export default function ProjectCard({ id, name, description, authors, type }) {
           fontWeight={"semi-bold"}
           color={colors.primary}
         >
-          {type}
+          {type ? type : <Skeleton variant="text" width="80%" height={20} />}
         </Typography>
         <Typography
           gutterBottom
@@ -53,10 +58,14 @@ export default function ProjectCard({ id, name, description, authors, type }) {
           fontWeight={"bold"}
           component="div"
         >
-          {name}
+          {name ? name : <Skeleton variant="text" width="90%" height={30} />}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description}
+          {description ? (
+            description
+          ) : (
+            <Skeleton variant="text" width="100%" height={50} />
+          )}
         </Typography>
       </CardContent>
       <Divider sx={{ width: "97%", marginLeft: "4px" }} />
@@ -68,7 +77,11 @@ export default function ProjectCard({ id, name, description, authors, type }) {
             variant="body2"
             color={"GrayText"}
           >
-            {`${author1}, ${author2}`}
+            {author1 && author2 ? (
+              `${author1}, ${author2}`
+            ) : (
+              <Skeleton variant="text" width="60%" height={16} />
+            )}
           </Typography>
         </Typography>
       </CardActions>
