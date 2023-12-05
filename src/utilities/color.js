@@ -3,6 +3,7 @@ const colors = {
   accent: "#BE7B2E",
   cardBackground: "#FCFCF7",
   cardBorder: "#E6E6E6",
+  shadowColor: "#EFDFCC",
   white: "#F2F8FC",
 };
 
