@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Box from "@mui/material/Box";
-import DrawerNav from "./Sidenav";
+import SideNavigation from "./Drawer";
 export default function Layout() {
   return (
     <>
       <Box sx={{ display: "flex" }}>
-        <DrawerNav />
+        <SideNavigation />
         <Outlet />
       </Box>
     </>
