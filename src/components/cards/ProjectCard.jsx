@@ -69,7 +69,10 @@ export default function ProjectCard({ id, name, description, authors, type }) {
         </Typography>
       </CardContent>
       <Divider sx={{ width: "97%", marginLeft: "4px" }} />
-      <CardActions onClick={handleClick}>
+      <CardActions onClick={handleClick} sx={{
+        ":hover": {
+        cursor:"pointer"
+      }}}>
         <Typography component="div" display={"flex"}>
           <PersonIcon sx={{ color: colors.primary, fontSize: "18px", mr: 1 }} />
           <Typography
