@@ -1,9 +1,9 @@
 import { React, useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
 import DisplayGrid from "../components/DisplayGrid";
 import FilterButton from "../components/Filter";
 import Loader from "../components/Loader";
+import PageTitle from "../components/PageTitle";
 
 const Education = () => {
   const educationFilter = ["Rédaction projet", "Mémoire"];
@@ -56,20 +56,13 @@ const Education = () => {
   return (
     <>
       <Box component="main" sx={{ flexGrow: 1, p: 5 }} alignItems="center">
-        <Typography
-          variant="h4"
-          color={"GrayText"}
-          fontWeight="600"
-          textAlign="left"
-          mt={8}
-          mb={2}
-        >
-          Science de L'Éducation
-        </Typography>
+        <PageTitle title={"Science de L'Éducation"} />
+
         <FilterButton
           options={educationFilter}
           selectedOption={selectedOption}
           onOptionChange={handleFilterChange}
+          clearFilter={() => setSelectedOption("")}
         />
         {loading ? <Loader /> : <DisplayGrid projectList={projects} />}
       </Box>

@@ -1,9 +1,11 @@
 import React from "react";
-import { Typography, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import FilterButton from "../components/Filter";
 import DisplayGrid from "../components/DisplayGrid";
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader";
+import PageTitle from "../components/PageTitle";
+
 const Informatique = () => {
   const toFilteredBy = ["App Mobile", "Desktop App", "Web App"];
   const [selectedOption, setSelectedOption] = useState("");
@@ -20,7 +22,7 @@ const Informatique = () => {
       let response, responseData;
       switch (selectedOption) {
         case "App Mobile":
-            setLoading(true);
+          setLoading(true);
           response = await fetch(
             "http://localhost:4000/api/projects/discipline/Informatique/type/App%20mobile"
           );
@@ -29,7 +31,7 @@ const Informatique = () => {
           setLoading(false);
           break;
         case "Desktop App":
-            setLoading(true);
+          setLoading(true);
           response = await fetch(
             "http://localhost:4000/api/projects/discipline/Informatique/type/Desktop%20application"
           );
@@ -48,9 +50,9 @@ const Informatique = () => {
           break;
 
         default:
-         response = await fetch(
-           "http://localhost:4000/api/projects/discipline/Informatique"
-         );
+          response = await fetch(
+            "http://localhost:4000/api/projects/discipline/Informatique"
+          );
           responseData = await response.json();
           setProjects(responseData.projects);
           setLoading(false);
@@ -64,22 +66,14 @@ const Informatique = () => {
   return (
     <>
       <Box component="main" sx={{ flexGrow: 1, p: 5 }} alignItems="center">
-        <Typography
-          variant="h4"
-          color={"GrayText"}
-          fontWeight="600"
-          textAlign="left"
-          mt={8}
-          mb={2}
-        >
-          Science Informatique
-        </Typography>
+        <PageTitle title={"Science Informatique"} />
 
         {/* Buttons to filter between Desktop and Mobile and Web */}
         <FilterButton
           options={toFilteredBy}
           selectedOption={selectedOption}
           onOptionChange={handleFilterChange}
+          clearFilter={() => setSelectedOption("")}
         />
         {loading ? <Loader /> : <DisplayGrid projectList={projects} />}
       </Box>

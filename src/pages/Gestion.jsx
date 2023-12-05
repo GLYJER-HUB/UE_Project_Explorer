@@ -1,10 +1,11 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
 import FilterButton from "../components/Filter";
 import DisplayGrid from "../components/DisplayGrid";
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader";
+import PageTitle from "../components/PageTitle";
+
 const Gestion = () => {
   const gesttionFilter = ["Plan d'affaire", "Rédaction de projet", "Mémoire"];
   const [selectedOption, setSelectedOption] = useState("");
@@ -25,7 +26,7 @@ const Gestion = () => {
         case "Mémoire":
           setLoading(true);
           response = await fetch(
-          " http://localhost:4000/api/projects/discipline/Gestion/type/Mémoire"
+            " http://localhost:4000/api/projects/discipline/Gestion/type/Mémoire"
           );
           responseData = await response.json();
           setProjects(responseData.projects);
@@ -67,23 +68,14 @@ const Gestion = () => {
   return (
     <>
       <Box component="main" sx={{ flexGrow: 1, p: 5 }} alignItems="center">
-        <Typography
-          variant="h4"
-          color={"GrayText"}
-          fontWeight="600"
-          textAlign="left"
-          mt={8}
-          mb={2}
-        >
-          Gestion des Affaires
-        </Typography>
+        <PageTitle title={"Gestion des Affaires"} />
         <FilterButton
           options={gesttionFilter}
           selectedOption={selectedOption}
           onOptionChange={handleFilterChange}
+          clearFilter={() => setSelectedOption("")}
         />
-
-        {loading ? <Loader /> : <DisplayGrid  projectList={projects}/>}
+        {loading ? <Loader /> : <DisplayGrid projectList={projects} />}
       </Box>
     </>
   );
