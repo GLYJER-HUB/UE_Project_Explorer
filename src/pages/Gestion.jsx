@@ -5,7 +5,7 @@ import DisplayGrid from "../components/DisplayGrid";
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader";
 import PageTitle from "../components/PageTitle";
-
+import { baseUrl } from "../utilities/api";
 const Gestion = () => {
   const gesttionFilter = ["Plan d'affaire", "Rédaction de projet", "Mémoire"];
   const [selectedOption, setSelectedOption] = useState("");
@@ -25,9 +25,7 @@ const Gestion = () => {
       switch (selectedOption) {
         case "Mémoire":
           setLoading(true);
-          response = await fetch(
-            " http://localhost:4000/api/projects/discipline/Gestion/type/Mémoire"
-          );
+          response = await fetch(baseUrl + "discipline/Gestion/type/Mémoire");
           responseData = await response.json();
           setProjects(responseData.projects);
           setLoading(false);
@@ -35,7 +33,7 @@ const Gestion = () => {
         case "Plan d'affaire":
           setLoading(true);
           response = await fetch(
-            "http://localhost:4000/api/projects/discipline/Gestion/type/Plan%20d'affaire"
+            baseUrl + "discipline/Gestion/type/Plan%20d'affaire"
           );
           responseData = await response.json();
           setProjects(responseData.projects);
@@ -44,7 +42,7 @@ const Gestion = () => {
         case "Rédaction de projet":
           setLoading(true);
           response = await fetch(
-            "http://localhost:4000/api/projects/discipline/Gestion/type/R%C3%A9daction%20de%20projet"
+            baseUrl + "discipline/Gestion/type/R%C3%A9daction%20de%20projet"
           );
           responseData = await response.json();
           setProjects(responseData.projects);
@@ -52,9 +50,7 @@ const Gestion = () => {
           break;
 
         default:
-          response = await fetch(
-            "http://localhost:4000/api/projects/discipline/Gestion"
-          );
+          response = await fetch(baseUrl + "discipline/Gestion");
           responseData = await response.json();
           setProjects(responseData.projects);
           setLoading(false);

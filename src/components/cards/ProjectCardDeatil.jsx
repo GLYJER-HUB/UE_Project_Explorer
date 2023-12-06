@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import ph from "../../assets/ph.webp";
 import colors from "../../utilities/color";
+import { baseUrl } from "../../utilities/api";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -21,7 +22,7 @@ export default function ProjectCardDeatil() {
   useEffect(() => {
     const fetchProjects = async () => {
       const response = await fetch(
-        `http://localhost:4000/api/projects/id/${id}`
+        `${baseUrl}id/${id}`
       );
       const responseData = await response.json();
       setProject(responseData);

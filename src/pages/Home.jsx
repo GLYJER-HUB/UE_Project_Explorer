@@ -3,13 +3,14 @@ import Box from "@mui/material/Box";
 import DisplayGrid from "../components/DisplayGrid";
 import Loader from "../components/Loader";
 import PageTitle from "../components/PageTitle";
+import { baseUrl } from "../utilities/api";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState([]);
   useEffect(() => {
     const fetchProjects = async () => {
-      const response = await fetch("http://localhost:4000/api/projects");
+      const response = await fetch(baseUrl);
       const responseData = await response.json();
       setProjects(responseData.projects);
       setLoading(false);

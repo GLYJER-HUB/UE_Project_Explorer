@@ -5,7 +5,7 @@ import DisplayGrid from "../components/DisplayGrid";
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader";
 import PageTitle from "../components/PageTitle";
-
+import { baseUrl } from "../utilities/api";
 const Informatique = () => {
   const toFilteredBy = ["App Mobile", "Desktop App", "Web App"];
   const [selectedOption, setSelectedOption] = useState("");
@@ -24,7 +24,7 @@ const Informatique = () => {
         case "App Mobile":
           setLoading(true);
           response = await fetch(
-            "http://localhost:4000/api/projects/discipline/Informatique/type/App%20mobile"
+            baseUrl + "discipline/Informatique/type/App%20mobile"
           );
           responseData = await response.json();
           setProjects(responseData.projects);
@@ -33,7 +33,7 @@ const Informatique = () => {
         case "Desktop App":
           setLoading(true);
           response = await fetch(
-            "http://localhost:4000/api/projects/discipline/Informatique/type/Desktop%20application"
+            baseUrl + "discipline/Informatique/type/Desktop%20application"
           );
           responseData = await response.json();
           setProjects(responseData.projects);
@@ -42,7 +42,7 @@ const Informatique = () => {
         case "Web App":
           setLoading(true);
           response = await fetch(
-            "http://localhost:4000/api/projects/discipline/Informatique/type/Web%20application"
+            baseUrl + "discipline/Informatique/type/Web%20application"
           );
           responseData = await response.json();
           setProjects(responseData.projects);
@@ -50,9 +50,7 @@ const Informatique = () => {
           break;
 
         default:
-          response = await fetch(
-            "http://localhost:4000/api/projects/discipline/Informatique"
-          );
+          response = await fetch(baseUrl + "discipline/Informatique");
           responseData = await response.json();
           setProjects(responseData.projects);
           setLoading(false);

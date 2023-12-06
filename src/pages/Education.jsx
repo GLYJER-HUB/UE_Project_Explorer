@@ -4,7 +4,7 @@ import DisplayGrid from "../components/DisplayGrid";
 import FilterButton from "../components/Filter";
 import Loader from "../components/Loader";
 import PageTitle from "../components/PageTitle";
-
+import { baseUrl } from "../utilities/api";
 const Education = () => {
   const educationFilter = ["Rédaction projet", "Mémoire"];
   const [selectedOption, setSelectedOption] = useState("");
@@ -24,7 +24,7 @@ const Education = () => {
         case "Mémoire":
           setLoading(true);
           response = await fetch(
-            "http://localhost:4000/api/projects/discipline/%C3%89ducation/type/Mémoire"
+            baseUrl + "discipline/%C3%89ducation/type/Mémoire"
           );
           responseData = await response.json();
           setProjects(responseData.projects);
@@ -33,7 +33,8 @@ const Education = () => {
         case "Rédaction projet":
           setLoading(true);
           response = await fetch(
-            "http://localhost:4000/api/projects/discipline/%C3%89ducation/type/R%C3%A9daction%20de%20projet"
+            baseUrl +
+              "discipline/%C3%89ducation/type/R%C3%A9daction%20de%20projet"
           );
           responseData = await response.json();
           setProjects(responseData.projects);
@@ -41,9 +42,7 @@ const Education = () => {
           break;
 
         default:
-          response = await fetch(
-            "http://localhost:4000/api/projects/discipline/%C3%89ducation"
-          );
+          response = await fetch(baseUrl + "discipline/%C3%89ducation");
           responseData = await response.json();
           setProjects(responseData.projects);
           setLoading(false);

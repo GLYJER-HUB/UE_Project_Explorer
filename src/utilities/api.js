@@ -1,0 +1,1 @@
+export const baseUrl = "https://ue-project-explore-api.onrender.com/api/projects/";

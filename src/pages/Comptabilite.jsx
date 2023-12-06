@@ -1,12 +1,11 @@
 import { React, useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-
 import { Typography } from "@mui/material";
 import FilterButton from "../components/Filter";
 import DisplayGrid from "../components/DisplayGrid";
 import Loader from "../components/Loader";
 import PageTitle from "../components/PageTitle";
-
+import { baseUrl } from "../utilities/api";
 const Comptabilite = () => {
   const accountingFilter = ["Plan d'affaire", "Système comptable"];
   const [selectedOption, setSelectedOption] = useState("");
@@ -26,7 +25,7 @@ const Comptabilite = () => {
         case "Plan d'affaire":
           setLoading(true);
           response = await fetch(
-            "http://localhost:4000/api/projects/discipline/Comptabilit%C3%A9/type/Plan%20d'affaire"
+            baseUrl + "discipline/Comptabilit%C3%A9/type/Plan%20d'affaire"
           );
           responseData = await response.json();
           setProjects(responseData.projects);
@@ -35,7 +34,8 @@ const Comptabilite = () => {
         case "Système comptable":
           setLoading(true);
           response = await fetch(
-            "http://localhost:4000/api/projects/discipline/Comptabilit%C3%A9/type/Syst%C3%A8me%20comptable"
+            baseUrl +
+              "discipline/Comptabilit%C3%A9/type/Syst%C3%A8me%20comptable"
           );
           responseData = await response.json();
           setProjects(responseData.projects);
@@ -44,9 +44,7 @@ const Comptabilite = () => {
 
         default:
           setLoading(true);
-          response = await fetch(
-            "http://localhost:4000/api/projects/discipline/Comptabilité"
-          );
+          response = await fetch(baseUrl + "discipline/Comptabilité");
           responseData = await response.json();
           setProjects(responseData.projects);
           setLoading(false);
