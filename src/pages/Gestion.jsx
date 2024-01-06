@@ -59,7 +59,7 @@ const Gestion = () => {
     };
 
     fetchProjects();
-  }, [selectedOption]);
+  }, [selectedOption,projects]);
 
   return (
     <>

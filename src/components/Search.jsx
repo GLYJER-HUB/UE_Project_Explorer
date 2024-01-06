@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import colors from "../utilities/color";
-
+import { useSearchContext } from "./SearchContext";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -42,15 +42,28 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     borderRadius: "8px",
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "20ch",
+      width: "30ch",
       "&:focus": {
-        width: "20ch",
+        width: "30ch",
       },
     },
   },
 }));
 
-const SearchBar = ({ handleChange, searchInput, inputKeyPress }) => {
+const SearchBar = () => {
+
+  const { searchInput, handleSearchChange } = useSearchContext();
+
+  const handleChange = (e) => {
+    handleSearchChange(e.target.value);
+    console.log(e.target.value);
+  };
+   const inputKeyPress = (e) => {
+     if (e.key === "Enter") {
+       // Handle search on Enter key press if needed
+     }
+   };
+
   return (
     <Box sx={{ flexGrow: 1, marginY: 2 }}>
       <Search>

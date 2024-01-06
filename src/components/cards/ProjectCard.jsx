@@ -29,7 +29,12 @@ export default function ProjectCard({ id, name, description, authors, type }) {
 
   return (
     <Card
-      sx={{ maxWidth: 350, mb: 2, border: `0.3px solid ${colors.cardBorder}` }}
+      sx={{
+        maxWidth: matchMedia,
+        minWidth: 300,
+        mb: 2,
+        border: `0.3px solid ${colors.cardBorder}`,
+      }}
     >
       <CardHeader
         avatar={
@@ -50,7 +55,7 @@ export default function ProjectCard({ id, name, description, authors, type }) {
           fontWeight={"semi-bold"}
           color={colors.primary}
         >
-          {type ? type : <Skeleton variant="text" width="80%" height={20} />}
+          {type}
         </Typography>
         <Typography
           gutterBottom
@@ -58,21 +63,21 @@ export default function ProjectCard({ id, name, description, authors, type }) {
           fontWeight={"bold"}
           component="div"
         >
-          {name ? name : <Skeleton variant="text" width="90%" height={30} />}
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description ? (
-            description
-          ) : (
-            <Skeleton variant="text" width="100%" height={50} />
-          )}
+          {description}
         </Typography>
       </CardContent>
       <Divider sx={{ width: "97%", marginLeft: "4px" }} />
-      <CardActions onClick={handleClick} sx={{
-        ":hover": {
-        cursor:"pointer"
-      }}}>
+      <CardActions
+        onClick={handleClick}
+        sx={{
+          ":hover": {
+            cursor: "pointer",
+          },
+        }}
+      >
         <Typography component="div" display={"flex"}>
           <PersonIcon sx={{ color: colors.primary, fontSize: "18px", mr: 1 }} />
           <Typography
@@ -80,11 +85,7 @@ export default function ProjectCard({ id, name, description, authors, type }) {
             variant="body2"
             color={"GrayText"}
           >
-            {author1 && author2 ? (
-              `${author1}, ${author2}`
-            ) : (
-              <Skeleton variant="text" width="60%" height={16} />
-            )}
+            {`${author1}, ${author2}`}
           </Typography>
         </Typography>
       </CardActions>

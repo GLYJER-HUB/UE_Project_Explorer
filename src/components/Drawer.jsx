@@ -64,7 +64,6 @@ function SideNavigation(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
   const drawer = (
     <div>
       <List>
@@ -111,8 +110,7 @@ function SideNavigation(props) {
   );
 
   // Remove this const when copying and pasting into your project.
-  let container =
-    window !== undefined ? () => window().document.body : undefined;
+  // let container =window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -136,7 +134,10 @@ function SideNavigation(props) {
           >
             <MenuIcon sx={{ color: colors.primary }} />
           </IconButton>
-          <Typography component={"div"} sx={{ ml: 110 }}>
+          <Typography
+            component={"div"}
+            sx={{ ml: mobileOpen ? "auto" : "50%" }}
+          >
             <SearchBar />
           </Typography>
         </Toolbar>
@@ -147,7 +148,7 @@ function SideNavigation(props) {
         aria-label="mailbox folders"
       >
         <Drawer
-          container={container}
+          // container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
