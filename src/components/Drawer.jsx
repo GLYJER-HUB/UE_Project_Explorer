@@ -14,6 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import colors from "../utilities/color";
 import { useNavigate } from "react-router-dom";
+
 import {
   FolderOpen,
   LaptopOutlined,
@@ -58,7 +59,6 @@ function SideNavigation(props) {
   const handleClick = (path) => {
     navigate(path);
   };
-  const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -109,9 +109,6 @@ function SideNavigation(props) {
     </div>
   );
 
-  // Remove this const when copying and pasting into your project.
-  // let container =window !== undefined ? () => window().document.body : undefined;
-
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -136,7 +133,7 @@ function SideNavigation(props) {
           </IconButton>
           <Typography
             component={"div"}
-            sx={{ ml: mobileOpen ? "auto" : "50%" }}
+            sx={{ ml: mobileOpen ? "auto" : "65%" }}
           >
             <SearchBar />
           </Typography>

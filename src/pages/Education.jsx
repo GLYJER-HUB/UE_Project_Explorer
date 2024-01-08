@@ -5,7 +5,10 @@ import FilterButton from "../components/Filter";
 import Loader from "../components/Loader";
 import PageTitle from "../components/PageTitle";
 import { baseUrl } from "../utilities/api";
+import { useSearchContext } from "../components/SearchContext";
+
 const Education = () => {
+  const { searchInput } = useSearchContext();
   const educationFilter = ["Rédaction projet", "Mémoire"];
   const [selectedOption, setSelectedOption] = useState("");
   const [loading, setLoading] = useState(true);
@@ -15,43 +18,55 @@ const Education = () => {
     // Handle filter change to change grid
     setSelectedOption(option);
   };
-
+ 
+  
   useEffect(() => {
     const fetchProjects = async () => {
       let response, responseData;
 
-      switch (selectedOption) {
-        case "Mémoire":
-          setLoading(true);
-          response = await fetch(
-            baseUrl + "discipline/%C3%89ducation/type/Mémoire"
-          );
-          responseData = await response.json();
-          setProjects(responseData.projects);
-          setLoading(false);
-          break;
-        case "Rédaction projet":
-          setLoading(true);
-          response = await fetch(
-            baseUrl +
-              "discipline/%C3%89ducation/type/R%C3%A9daction%20de%20projet"
-          );
-          responseData = await response.json();
-          setProjects(responseData.projects);
-          setLoading(false);
-          break;
+      // If searchInput is not empty, fetch projects based on searchInput
+      if (searchInput.trim() !== "") {
+        setLoading(true);
+        response = await fetch(
+          baseUrl + `search?query=${encodeURIComponent(searchInput)}`
+        );
+        responseData = await response.json();
+        setProjects(responseData.projects);
+        setLoading(false);
+      } else {
+        switch (selectedOption) {
+          case "Mémoire":
+            setLoading(true);
+            response = await fetch(
+              baseUrl + "discipline/%C3%89ducation/type/Mémoire"
+            );
+            responseData = await response.json();
+            setProjects(responseData.projects);
+            setLoading(false);
+            break;
+          case "Rédaction projet":
+            setLoading(true);
+            response = await fetch(
+              baseUrl +
+                "discipline/%C3%89ducation/type/R%C3%A9daction%20de%20projet"
+            );
+            responseData = await response.json();
+            setProjects(responseData.projects);
+            setLoading(false);
+            break;
 
-        default:
-          response = await fetch(baseUrl + "discipline/%C3%89ducation");
-          responseData = await response.json();
-          setProjects(responseData.projects);
-          setLoading(false);
-          break;
+          default:
+            response = await fetch(baseUrl + "discipline/%C3%89ducation");
+            responseData = await response.json();
+            setProjects(responseData.projects);
+            setLoading(false);
+            break;
+        }
       }
     };
 
     fetchProjects();
-  }, [selectedOption]);
+  }, [selectedOption, searchInput]);
   return (
     <>
       <Box component="main" sx={{ flexGrow: 1, p: 5 }} alignItems="center">
