@@ -15,7 +15,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import SchoolIcon from "@mui/icons-material/School";
 import { Box, Button } from "@mui/material";
 
-import ph from "../../assets/ph.webp";
+import ph from "../../assets/fallback.webp";
 import colors from "../../utilities/color";
 import { baseUrl } from "../../utilities/api";
 import { useParams, useNavigate } from "react-router-dom";
