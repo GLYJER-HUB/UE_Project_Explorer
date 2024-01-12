@@ -7,11 +7,11 @@ export default function Layout() {
   return (
     <>
       <SearchProvider>
-        <Box sx={{ display: "flex" }}>
-          <SideNavigation />
-          <Outlet />
-          <Footer />
-        </Box>
+          <Box sx={{ display: "flex" }}>
+            <SideNavigation />
+            <Outlet />
+            <Footer />
+          </Box>
       </SearchProvider>
     </>
   );

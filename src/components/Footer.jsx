@@ -2,6 +2,8 @@ import { React, useEffect, useState } from "react";
 import { Container, Grid, Typography, Stack, Link, Box } from "@mui/material";
 import colors from "../utilities/color";
 
+const drawerWidth = 240;
+
 const Footer = () => {
   const [showFooter, setShowFooter] = useState(false);
 
@@ -26,23 +28,18 @@ const Footer = () => {
       sx={{
         bgcolor: colors.primary,
         py: 2,
+        width: { sm: `calc(100% - ${drawerWidth}px)` },
+        ml: { sm: `${drawerWidth}px` },
         textAlign: "center",
         position: "fixed",
         bottom: 0,
-        width: "100%",
+        zIndex: 1000,
         
       }}
     >
       <Container maxWidth="lg">
         <Grid container justifyContent="space-between" alignItems="center">
           <Grid item xs={12} md={6}>
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              spacing={{ xs: 1, sm: 0.5 }}
-              sx={{
-                paddingLeft: { xs: "0", sm: "20%" },
-              }}
-            >
               <Typography
                 variant="body2"
                 color={colors.white}
@@ -50,18 +47,12 @@ const Footer = () => {
               >
                 &copy; TOUS DROITS RÉSERVÉS 2015 - 2023 UNIVERSITÉ ESPOIR
               </Typography>
-            </Stack>
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              spacing={{ xs: 1, sm: 0.5 }}
-              sx={{
-                paddingLeft: { xs: "0", sm: "20%" },
-              }}
-            >
+            
               <Typography
                 variant="body2"
                 color={colors.white}
                 fontWeight="bold"
+                style={{ display: 'inline', marginRight: '5px' }}
               >
                 UN MINISTÈRE DE
               </Typography>
@@ -71,30 +62,26 @@ const Footer = () => {
                 underline="none"
                 target="_blank"
                 rel="noopener"
+                style={{ display: 'inline' }}
               >
                 <Typography
                   variant="body2"
                   color={colors.accent}
                   fontWeight="bold"
+                  style={{ display: 'inline' }}
                 >
-                  CALVARY CHAPEL PORT-AU-PRINCE
+                   CALVARY CHAPEL PORT-AU-PRINCE
                 </Typography>
               </Link>
-            </Stack>
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              gap={{ xs: 1, sm: 1 }}
-              sx={{
-                paddingLeft: { xs: "0", sm: "50%" },
-              }}
-            >
+            
               <Typography
                 variant="body2"
                 color={colors.white}
                 fontWeight="bold"
+                style={{ display: 'inline', marginRight: '5px' }}                
               >
                 DEVELOPPÉ PAR
               </Typography>
@@ -104,16 +91,17 @@ const Footer = () => {
                 underline="none"
                 target="_blank"
                 rel="noopener"
+                style={{ display: 'inline'}}
               >
                 <Typography
                   variant="body2"
                   color={colors.accent}
                   fontWeight="bold"
+                style={{ display: 'inline'}}
                 >
                   ZOOMER DIGITAL
                 </Typography>
               </Link>
-            </Stack>
           </Grid>
         </Grid>
       </Container>
