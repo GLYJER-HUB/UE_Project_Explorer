@@ -42,9 +42,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     borderRadius: "8px",
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "35ch",
+      width: "30ch",
       "&:focus": {
-        width: "35ch",
+        width: "30ch",
       },
     },
   },
@@ -58,11 +58,11 @@ const SearchBar = () => {
     handleSearchChange(e.target.value);
     console.log(e.target.value);
   };
-   const inputKeyPress = (e) => {
-     if (e.key === "Enter") {
-       // Handle search on Enter key press if needed
-     }
-   };
+  const inputKeyPress = (e) => {
+    if (e.key === "Enter") {
+      // Handle search on Enter key press if needed
+    }
+  };
 
   return (
     <Box sx={{ flexGrow: 1, marginY: 2 }}>

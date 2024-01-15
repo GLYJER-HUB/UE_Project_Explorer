@@ -17,7 +17,7 @@ import { Box, Button } from "@mui/material";
 
 import ph from "../../assets/fallback.webp";
 import colors from "../../utilities/color";
-import { baseUrl } from "../../utilities/api";
+import { baseUrl, serverUrl } from "../../utilities/api";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -47,7 +47,7 @@ export default function ProjectDetailView() {
     fetchProjects();
   }, [id]);
 
-  const { project_name, description, year_of_submission, authors } = project;
+  const { project_name, description, year_of_submission, authors, cover, pdf_file } = project;
   let author1, author2;
 
   if (Array.isArray(authors)) {
@@ -60,7 +60,7 @@ export default function ProjectDetailView() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, m: 4, display: 'flex', flexDirection: 'column', alignItems: 'center'  }}>
+    <Box sx={{ flexGrow: 1, m: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Typography variant="div" position={'relative'} left={0}>
         <Button
           variant="contained"
@@ -76,8 +76,8 @@ export default function ProjectDetailView() {
         >
           Retour
         </Button>
-          </Typography>
-          <br/>
+      </Typography>
+      <br />
 
       <Card sx={{ minWidth: 445, maxWidth: "50%" }}>
         <CardHeader
@@ -89,7 +89,7 @@ export default function ProjectDetailView() {
           title={`${author1}, ${author2}`}
           subheader={`Année: ${year_of_submission}`}
         />
-        <CardMedia component="img" height="200" image={ph} alt="Paella dish" />
+        <CardMedia component="img" height="200" image={cover ? serverUrl + cover : ph} alt="Projet Cover" />
         <CardContent>
           <Typography variant="h6" color={colors.text}>
             {project_name}
@@ -99,7 +99,7 @@ export default function ProjectDetailView() {
           <IconButton aria-label="add to favorites">
             <GitHubIcon sx={{ color: "#000" }} />
           </IconButton>
-          <IconButton aria-label="share">
+          <IconButton aria-label="share" onClick={() => window.open(serverUrl + pdf_file)}>
             <PictureAsPdfIcon sx={{ color: "#C41E3A" }} />
           </IconButton>
           <ExpandMore
