@@ -7,7 +7,7 @@ import { Typography } from "@mui/material";
 export default function DisplayGrid({ projectList }) {
   return (
     <Box mb={{xs:16, sm:8}}>
-      <Grid container spacing={2.5} mt={2} columns={{ sm: 8, md: 12, lg: 12 }}>
+      <Grid container spacing={3} mt={2} columns={{ sm: 8, md: 12, lg: 12 }}>
         {Array.isArray(projectList) ? (
           projectList.map((project, index) => (
             <Grid item xs={12} sm={6} md={6} lg={4} key={project.type + index}>
