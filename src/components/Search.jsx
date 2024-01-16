@@ -13,10 +13,14 @@ const Search = styled("div")(({ theme }) => ({
     backgroundColor: colors.cardBackground,
   },
   marginLeft: 10,
-  width: "auto%",
+  width: "100%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
     width: "auto",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "130%", // Full width for mobile screens
+    margin: "0 auto",
   },
 }));
 
