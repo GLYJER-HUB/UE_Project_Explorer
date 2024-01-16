@@ -11,7 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import SchoolIcon from "@mui/icons-material/School";
 import { Box, Button } from "@mui/material";
 
@@ -20,7 +20,6 @@ import colors from "../../utilities/color";
 import { baseUrl, serverUrl } from "../../utilities/api";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -47,7 +46,15 @@ export default function ProjectDetailView() {
     fetchProjects();
   }, [id]);
 
-  const { project_name, description, year_of_submission, authors, cover, pdf_file } = project;
+  const {
+    project_name,
+    description,
+    year_of_submission,
+    authors,
+    cover,
+    pdf_file,
+    project_url,
+  } = project;
   let author1, author2;
 
   if (Array.isArray(authors)) {
@@ -59,9 +66,23 @@ export default function ProjectDetailView() {
     setExpanded(!expanded);
   };
 
+  const hanldeViewProject = (url) => {
+    if (url) {
+      window.open(url);
+    }
+  };
+
   return (
-    <Box sx={{ flexGrow: 1, m: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Typography variant="div" position={'relative'} left={0}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        m: 4,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Typography variant="div" position={"relative"} left={0}>
         <Button
           variant="contained"
           onClick={() => navigate(-1)}
@@ -78,8 +99,7 @@ export default function ProjectDetailView() {
         </Button>
       </Typography>
       <br />
-
-      <Card sx={{ minWidth: 445, maxWidth: "50%" }}>
+      <Card sx={{ minWidth: 345, maxWidth: "50%" }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: colors.primary }} aria-label="recipe">
@@ -89,17 +109,30 @@ export default function ProjectDetailView() {
           title={`${author1}, ${author2}`}
           subheader={`Année: ${year_of_submission}`}
         />
-        <CardMedia component="img" height="200" image={cover ? serverUrl + cover : ph} alt="Projet Cover" />
+        <CardMedia
+          component="img"
+          height="200"
+          image={cover ? serverUrl + cover : ph}
+          alt="Projet Cover"
+        />
         <CardContent>
           <Typography variant="h6" color={colors.text}>
             {project_name}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <GitHubIcon sx={{ color: "#000" }} />
-          </IconButton>
-          <IconButton aria-label="share" onClick={() => window.open(serverUrl + pdf_file)}>
+          {project_url && (
+            <IconButton
+              aria-label="add to favorites"
+              onClick={() => hanldeViewProject(project_url)}
+            >
+              <VisibilityIcon sx={{ color: colors.primary }} />
+            </IconButton>
+          )}
+          <IconButton
+            aria-label="share"
+            onClick={() => window.open(serverUrl + pdf_file)}
+          >
             <PictureAsPdfIcon sx={{ color: "#C41E3A" }} />
           </IconButton>
           <ExpandMore

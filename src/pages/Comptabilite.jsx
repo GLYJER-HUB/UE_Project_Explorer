@@ -22,43 +22,6 @@ const Comptabilite = () => {
     console.log(`Filter changed to: ${option}`);
   };
 
-  // useEffect(() => {
-  //   const fetchProjects = async () => {
-  //     let response, responseData;
-  //     switch (selectedOption) {
-  //       case "Plan d'affaire":
-  //         setLoading(true);
-  //         response = await fetch(
-  //           baseUrl + "discipline/Comptabilit%C3%A9/type/Plan%20d'affaire"
-  //         );
-  //         responseData = await response.json();
-  //         setProjects(responseData.projects);
-  //         setLoading(false);
-  //         break;
-  //       case "Système comptable":
-  //         setLoading(true);
-  //         response = await fetch(
-  //           baseUrl +
-  //             "discipline/Comptabilit%C3%A9/type/Syst%C3%A8me%20comptable"
-  //         );
-  //         responseData = await response.json();
-  //         setProjects(responseData.projects);
-  //         setLoading(false);
-  //         break;
-
-  //       default:
-  //         setLoading(true);
-  //         response = await fetch(baseUrl + "discipline/Comptabilité");
-  //         responseData = await response.json();
-  //         setProjects(responseData.projects);
-  //         setLoading(false);
-  //         break;
-  //     }
-  //   };
-
-  //   fetchProjects();
-  // }, [selectedOption]);
-
   useEffect(() => {
     const fetchProjects = async () => {
       let response, responseData;
@@ -88,7 +51,7 @@ const Comptabilite = () => {
             setLoading(true);
             response = await fetch(
               baseUrl +
-              "discipline/Comptabilit%C3%A9/type/Syst%C3%A8me%20comptable"
+                "discipline/Comptabilit%C3%A9/type/Syst%C3%A8me%20comptable"
             );
             responseData = await response.json();
             setProjects(responseData.projects);
