@@ -58,7 +58,7 @@ const Footer = () => {
               </Typography>
 
               <Link
-                href="https://calvarypap.org/"
+                href="https://uespoir.edu.ht/fr/"
                 underline="none"
                 target="_blank"
                 rel="noopener"
