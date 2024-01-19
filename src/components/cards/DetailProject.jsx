@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
@@ -13,13 +12,14 @@ import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import SchoolIcon from "@mui/icons-material/School";
-import { Box, Button } from "@mui/material";
-
+import { Box, Button,CardContent } from "@mui/material";
 import ph from "../../assets/fallback.webp";
 import colors from "../../utilities/color";
 import { baseUrl, serverUrl } from "../../utilities/api";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+
+
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -31,19 +31,20 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+
 export default function ProjectDetailView() {
   const [expanded, setExpanded] = React.useState(true);
   const navigate = useNavigate();
   const [project, setProject] = useState({});
   const { id } = useParams();
   useEffect(() => {
-    const fetchProjects = async () => {
+    const fetchProject = async () => {
       const response = await fetch(`${baseUrl}id/${id}`);
       const responseData = await response.json();
       setProject(responseData);
     };
 
-    fetchProjects();
+    fetchProject();
   }, [id]);
 
   const {

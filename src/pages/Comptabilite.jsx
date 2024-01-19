@@ -10,7 +10,6 @@ import { useSearchContext } from "../components/SearchContext";
 
 const Comptabilite = () => {
   const { searchInput } = useSearchContext();
-  console.log(searchInput);
   const accountingFilter = ["Plan d'affaire", "Système comptable"];
   const [selectedOption, setSelectedOption] = useState("");
   const [projects, setProjects] = useState([]);

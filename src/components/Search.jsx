@@ -25,7 +25,6 @@ const Search = styled("div")(({ theme }) => ({
   },
 }));
 
-
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
@@ -36,7 +35,6 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
   color: colors.primary,
 }));
-
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
@@ -56,12 +54,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchBar = () => {
-
   const { searchInput, handleSearchChange } = useSearchContext();
 
   const handleChange = (e) => {
     handleSearchChange(e.target.value);
-    console.log(e.target.value);
   };
   const inputKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -86,7 +82,5 @@ const SearchBar = () => {
     </Box>
   );
 };
-
-
 
 export default SearchBar;

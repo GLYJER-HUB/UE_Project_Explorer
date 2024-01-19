@@ -7,7 +7,6 @@ import {
   CardContent,
   CardActions,
   Card,
-  Skeleton,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import colors from "../../utilities/color";
@@ -27,6 +26,14 @@ export default function ProjectCard({ id, name, description, authors, type }) {
     [author1, author2 = ""] = authors;
   }
 
+  const twoLinesEllipsisStyle = {
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    textOverflow: "ellipsis",
+    WebkitLineClamp: 2,
+  };
+
   return (
     <Card
       sx={{
@@ -34,17 +41,17 @@ export default function ProjectCard({ id, name, description, authors, type }) {
         minWidth: 300,
         mb: 2,
         border: `0.3px solid ${colors.cardBorder}`,
+        ":hover": {
+          cursor: "pointer",
+        },
       }}
+      onClick={handleClick}
     >
       <CardHeader
         avatar={
-          projectAbbreviation ? (
-            <Avatar sx={{ bgcolor: colors.primary }} aria-label="recipe">
-              {projectAbbreviation}
-            </Avatar>
-          ) : (
-            <Skeleton variant="circular" width={40} height={40} />
-          )
+          <Avatar sx={{ bgcolor: colors.primary }} aria-label="recipe">
+            {projectAbbreviation}
+          </Avatar>
         }
       />
       <CardContent>
@@ -65,19 +72,16 @@ export default function ProjectCard({ id, name, description, authors, type }) {
         >
           {name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          style={twoLinesEllipsisStyle}
+        >
           {description}
         </Typography>
       </CardContent>
       <Divider sx={{ width: "97%", marginLeft: "4px" }} />
-      <CardActions
-        onClick={handleClick}
-        sx={{
-          ":hover": {
-            cursor: "pointer",
-          },
-        }}
-      >
+      <CardActions>
         <Typography component="div" display={"flex"}>
           <PersonIcon sx={{ color: colors.primary, fontSize: "18px", mr: 1 }} />
           <Typography

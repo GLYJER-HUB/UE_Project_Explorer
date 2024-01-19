@@ -1,19 +1,18 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import { ListItem, ListItemText } from "@mui/material";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import colors from "../utilities/color";
-import { useNavigate } from "react-router-dom";
+import {
+  AppBar,
+  Box,
+  CssBaseline,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemButton,
+  ListItemIcon,
+  IconButton,
+  Toolbar,
+} from "@mui/material";
 
 import {
   FolderOpen,
@@ -22,6 +21,10 @@ import {
   ShowChartOutlined,
   School,
 } from "@mui/icons-material";
+import MenuIcon from "@mui/icons-material/Menu";
+import Typography from "@mui/material/Typography";
+import colors from "../utilities/color";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/UE.png";
 import SearchBar from "./Search";
 const drawerWidth = 240;

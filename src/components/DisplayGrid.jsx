@@ -1,12 +1,10 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import ProjectCard from "./cards/ProjectCard";
-import { Typography } from "@mui/material";
+import { Typography, Grid, Box } from "@mui/material";
 
 export default function DisplayGrid({ projectList }) {
   return (
-    <Box mb={{xs:16, sm:8}}>
+    <Box mb={{ xs: 16, sm: 8 }}>
       <Grid container spacing={3} mt={2} columns={{ sm: 8, md: 12, lg: 12 }}>
         {Array.isArray(projectList) ? (
           projectList.map((project, index) => (
