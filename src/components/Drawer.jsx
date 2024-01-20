@@ -77,6 +77,7 @@ function SideNavigation(props) {
             sx={{ display: "block" }}
             onClick={() => {
               handleClick(item.path);
+              setMobileOpen(!mobileOpen);
             }}
           >
             <ListItemButton
