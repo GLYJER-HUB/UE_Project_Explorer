@@ -12,16 +12,16 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: colors.cardBackground,
   },
-  margin : "0 auto",
-
+  marginLeft: 10,
+  marginRight: 10,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
-    // marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(1),
     width: "auto",
   },
   [theme.breakpoints.down("sm")]: {
-    width: "auto", // Full width for mobile screens
-    // margin: "0 auto",
+    width: "100%", // Full width for mobile screens
+    margin: "0 auto",
   },
  
 }));
