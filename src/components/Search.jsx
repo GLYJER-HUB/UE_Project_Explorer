@@ -12,17 +12,18 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: colors.cardBackground,
   },
-  marginLeft: 10,
-  marginRight: 10,
+  margin : "0 auto",
+
   width: "100%",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
+    // marginLeft: theme.spacing(1),
     width: "auto",
   },
   [theme.breakpoints.down("sm")]: {
-    width: "108%", // Full width for mobile screens
-    margin: "0 auto",
+    width: "auto", // Full width for mobile screens
+    // margin: "0 auto",
   },
+ 
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -50,6 +51,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         width: "30ch",
       },
     },
+
+  
   },
 }));
 
@@ -72,7 +75,7 @@ const SearchBar = () => {
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
-          placeholder="Search..."
+          placeholder="Recherche..."
           inputProps={{ "aria-label": "search" }}
           value={searchInput}
           onChange={handleChange}
