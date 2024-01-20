@@ -13,7 +13,7 @@ import { useSearchContext } from "../components/SearchContext";
 const Gestion = () => {
   const { searchInput } = useSearchContext();
 
-  const gesttionFilter = ["Plan d'affaire", "Rédaction de projet", "Mémoire"];
+  const gesttionFilter = ["Plan d'affaire", "Rédaction projet", "Mémoire"];
   const [selectedOption, setSelectedOption] = useState("");
   const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState([]);
