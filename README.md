@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# UE Project Explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Project Overview:** A web application designed to showcase and manage a variety of academic projects across different disciplines. Users can explore a comprehensive list of projects, filter them by academic discipline, and access detailed information about each project.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+1. **Project List:**
 
-### `npm start`
+   - Display a complete list of all available projects on the platform.
+   - Each project is presented concisely with details such as project name, type, author, and description.
+   - Users can navigate through the projects and click on any project to get additional details.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Computer Science Projects:**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   - A specific page dedicated to projects in the field of computer science.
 
-### `npm test`
+3. **Accounting Projects:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   - A dedicated page listing all projects related to accounting.
+   - Users can explore these projects and find detailed information about each.
 
-### `npm run build`
+4. **Management Projects:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   - A page listing all projects falling under the domain of management.
+   - Users have the same functionalities as those in the previous pages.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. **Education Sciences Projects:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   - A dedicated page providing a complete list of projects in the field of education sciences.
+   - Users have the same functionalities as those in the previous pages.
 
-### `npm run eject`
+6. **Project Details:**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   - A page offering in-depth details about a specific project, including name, description, author, academic discipline, and other relevant information.
+   - Users can also find links to additional resources related to the project.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Visit the main page to explore the complete list of projects.
+- Navigate to specific pages dedicated to computer science, accounting, management, and education sciences projects for a focused exploration.
+- Click on any project to view detailed information.
 
-## Learn More
+## Technologies Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Frontend:** React
+- **UI Framework:** Material-UI
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Prerequisites
 
-### Code Splitting
+- Node.js and npm installed on your machine.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Getting Started
 
-### Analyzing the Bundle Size
+1. Clone the repository:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```bash
+   https://github.com/UEspoir-PE/UE_Project_Explorer.git
+   ```
 
-### Making a Progressive Web App
+2. Navigate to the project directory:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```bash
+   cd UE_Project_Explorer
+   ```
 
-### Advanced Configuration
+3. Install dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   ```bash
+   npm install
+   ```
 
-### Deployment
+4. Start the development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```bash
+   npm run start
+   ```
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   The application should now be running on `http://localhost:3000`.
