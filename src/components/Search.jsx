@@ -23,7 +23,6 @@ const Search = styled("div")(({ theme }) => ({
     width: "100%", // Full width for mobile screens
     margin: "0 auto",
   },
- 
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({

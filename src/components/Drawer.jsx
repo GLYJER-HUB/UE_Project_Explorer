@@ -137,7 +137,7 @@ function SideNavigation(props) {
           </IconButton>
           <Typography
             component={"div"}
-            sx={{ ml: mobileOpen ? "auto" : "20%" }}
+            sx={{ ml: "auto" }}
           >
             <SearchBar />
           </Typography>
