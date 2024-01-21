@@ -55,7 +55,7 @@
 1. Clone the repository:
 
    ```bash
-   https://github.com/UEspoir-PE/UE_Project_Explorer.git
+   git clone https://github.com/UEspoir-PE/UE_Project_Explorer.git
    ```
 
 2. Navigate to the project directory:
