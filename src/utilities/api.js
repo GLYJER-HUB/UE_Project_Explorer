@@ -1,3 +1,3 @@
 export const baseUrl =
-  "https://ue-project-explore-api.onrender.com/api/projects/";
-export const serverUrl = "https://ue-project-explore-api.onrender.com/";
+  "<<https://example/api.com>>/api/projects/";
+export const serverUrl = "<<https://example/api.com>>/";
