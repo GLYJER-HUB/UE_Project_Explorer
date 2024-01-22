@@ -1,14 +1,33 @@
-import { React } from "react";
+import { React, useEffect, useState } from "react";
 import { Container, Grid, Typography, Link, Box } from "@mui/material";
 import colors from "../utilities/color";
 
 const drawerWidth = 240;
 
 const Footer = () => {
+  const [showFooter, setShowFooter] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+
+      setShowFooter(isScrolledToBottom);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Box
       component="footer"
       sx={{
+        opacity: showFooter ? 1 : 0,
+        transition: "opacity 0.1s ease-in-out",
         bgcolor: colors.primary,
         py: 2,
         width: { sm: `calc(100% - ${drawerWidth}px)` },
